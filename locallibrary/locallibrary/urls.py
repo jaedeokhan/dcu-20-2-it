@@ -25,6 +25,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('catalog/', include('catalog.urls')),
+    path('catalog/', include('catalog.urls')), # catalog/는 새로 만든 앱
     path('', RedirectView.as_view(url="/catalog", permanent=True)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
