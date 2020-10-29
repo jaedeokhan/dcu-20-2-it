@@ -28,7 +28,8 @@ class Book(models.Model):
 
     # ManyToManyField used because genre can contain many books. Books can cover many genres.
     # Genre class has already been defined so we can specify the object above. 
-    genre = models.ManyToManyField(Genre, help_text="책의 유형을 선택하세요.")
+    genre = models.ManyToManyField('Genre', help_text="책의 유형을 선택하세요.")
+    language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.title
@@ -69,6 +70,7 @@ class BookInstance(models.Model):
 
     def __str__(self):
         return f'{self.id} ({self.book.title})'
+    
 
 class Author(models.Model):
     """Model representing an author."""
@@ -90,8 +92,8 @@ class Author(models.Model):
 
 # FK 로 만들기
 class Language(models.Model):
-    book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=200, help_text="책의 언어를 입력하세요(e.g. English, French, Japanese etc.")
 
     def __str__(self):
+        "String for representing the Model object (In Admin site )"
         return self.name

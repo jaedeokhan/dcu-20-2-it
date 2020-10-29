@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Local Library</title>{% endblock %}
+{% block content %}
+  <h1>Local Library Home</h1>
+  <p>Welcome to LocalLibrary, a website developed by <em>Mozilla Developer Network</em>!</p>
+  <h2>Dynamic content</h2>
+  <p>The library has the following record counts:</p>
+  <div class="container">
+  <table class="table table-dark table-striped">  
+    <thead>
+      <tr>
+        <th>Books</th>
+        <th>Genre</th>
+        <th>Copies</th>
+        <th>Copies available</th>
+        <th>Authors</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ num_books }}</td>
+        <td>{{ num_genre }}</td>
+        <td>{{ num_instances }}</td>
+        <td>{{ num_instances_available }}</td>
+        <td>{{ num_authors }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}
