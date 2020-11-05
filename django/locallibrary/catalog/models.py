@@ -11,7 +11,6 @@ class Genre(models.Model):
     # 만약, 이름에 정렬 순위를 주고 싶다면?
     # class Meta:
     #    ordering = ['name']
-
     def __str__(self):
         return self.name
 
