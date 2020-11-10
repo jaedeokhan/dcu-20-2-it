@@ -54,5 +54,5 @@ class AuthorListView(generic.ListView):
         return context
 
 
-class AuthorDetailView(generic.ListView):
+class AuthorDetailView(generic.DetailView):
     model = Author

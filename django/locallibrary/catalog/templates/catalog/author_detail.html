@@ -2,19 +2,21 @@
 
 {% block content %}
   <h1 class="display-4">Author : {{ author.last_name }},{{ author.first_name}}</h1>
-  <p><strong>{{ author.date_of_birth}}, {{ author.date_of_death }}</strong></p> 
+  <p>{{ author.date_of_birth}}, {{ author.date_of_death }}</p> 
 
   <div style="margin-left:20px;margin-top:20px">
     <h4>Books</h4>
 
-    <!-- {% for copy in book.bookinstance_set.all %}
-      <hr>
-      <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">{{ copy.get_status_display }}</p>
-      {% if copy.status != 'a' %}
-        <p><strong>Due to be returned:</strong> {{copy.due_back}}</p>
-      {% endif %}
-      <p><strong>Imprint:</strong> {{copy.imprint}}</p>
-      <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
-    {% endfor %} -->
+    {% for copy in author.book_set.all %}
+    <hr>
+      <p>
+      <strong><a href="{{ copy.get_absolute_url }}">
+          {{ copy.title }}
+        </a>
+      </strong>
+          ({{ copy.id }})
+      </p>
+      <p>{{ copy.summary}}</p>
+    {% endfor %} 
   </div>
 {% endblock %}
